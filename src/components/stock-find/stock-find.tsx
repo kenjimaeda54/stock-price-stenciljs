@@ -14,6 +14,7 @@ export class StockFind {
   @State() findStock: string;
   @State() stock: StockProps[];
   @State() symbolAtribute: string;
+  @State() isLoading = false;
 
   //estou criando um custom evento,bubbles e composed e para permitir qeu o evento seja capturado fora dessa classe
   @Event({ bubbles: true, composed: true }) ucSymbolSelected: EventEmitter<string>;
@@ -21,7 +22,7 @@ export class StockFind {
   async handleSubmit(event: Event) {
     event.preventDefault();
     try {
-      console.log('entrou aqui');
+      this.isLoading = true;
       const response = await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.findStock}&apikey=${process.env.API_KEY}`);
       const data = await response.json();
       this.stock = data['bestMatches'].map((it: StockProps) => {
@@ -32,6 +33,8 @@ export class StockFind {
       });
     } catch {
       console.log('error');
+    } finally {
+      this.isLoading = false;
     }
   }
 
@@ -55,7 +58,10 @@ export class StockFind {
         </button>
       </form>,
       <ul>
+        {/*precisa ser <kvm-spinner></kvm-spinner>, nao pose ser auto close*/}
+        {this.isLoading && <kvm-spinner></kvm-spinner>}
         {this.stock &&
+          !this.isLoading &&
           this.stock.map(it => (
             <li class={this.symbolAtribute === it.symbol && 'selectedSymbol'} onClick={this.handleSymbolSelected.bind(this, it.symbol)}>
               <strong>{it.symbol}</strong> - {it.name}

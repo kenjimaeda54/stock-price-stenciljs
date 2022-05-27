@@ -10,6 +10,7 @@ export class StockPrice {
   @State() stockSymbol: string;
   @State() isValidInput = false;
   @State() error: string | null;
+  @State() isLoading = false;
 
   @Prop({ mutable: true, reflect: true }) stockDefault: string; //isto e convertido do camel case para stock-default
 
@@ -63,6 +64,7 @@ export class StockPrice {
 
   async fetchData(stock: string) {
     try {
+      this.isLoading = true;
       const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stock}&apikey=${process.env.API_KEY}`);
       if (response.status !== 200) {
         throw new Error('Invalid symbol!');
@@ -76,6 +78,8 @@ export class StockPrice {
     } catch (err) {
       this.price = null;
       this.error = err.message;
+    } finally {
+      this.isLoading = false;
     }
   }
 
@@ -98,6 +102,9 @@ export class StockPrice {
     }
     if (this.price) {
       content = <span> Price:${this.price}</span>;
+    }
+    if (this.isLoading) {
+      content = <kvm-spinner></kvm-spinner>;
     }
     return [
       <form onSubmit={this.onFetchData.bind(this)}>

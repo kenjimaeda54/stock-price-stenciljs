@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface KvmSpinner {
+    }
     interface KvmStockFind {
     }
     interface KvmStockPrice {
@@ -13,6 +15,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLKvmSpinnerElement extends Components.KvmSpinner, HTMLStencilElement {
+    }
+    var HTMLKvmSpinnerElement: {
+        prototype: HTMLKvmSpinnerElement;
+        new (): HTMLKvmSpinnerElement;
+    };
     interface HTMLKvmStockFindElement extends Components.KvmStockFind, HTMLStencilElement {
     }
     var HTMLKvmStockFindElement: {
@@ -26,11 +34,14 @@ declare global {
         new (): HTMLKvmStockPriceElement;
     };
     interface HTMLElementTagNameMap {
+        "kvm-spinner": HTMLKvmSpinnerElement;
         "kvm-stock-find": HTMLKvmStockFindElement;
         "kvm-stock-price": HTMLKvmStockPriceElement;
     }
 }
 declare namespace LocalJSX {
+    interface KvmSpinner {
+    }
     interface KvmStockFind {
         "onUcSymbolSelected"?: (event: CustomEvent<string>) => void;
     }
@@ -38,6 +49,7 @@ declare namespace LocalJSX {
         "stockDefault"?: string;
     }
     interface IntrinsicElements {
+        "kvm-spinner": KvmSpinner;
         "kvm-stock-find": KvmStockFind;
         "kvm-stock-price": KvmStockPrice;
     }
@@ -46,6 +58,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "kvm-spinner": LocalJSX.KvmSpinner & JSXBase.HTMLAttributes<HTMLKvmSpinnerElement>;
             "kvm-stock-find": LocalJSX.KvmStockFind & JSXBase.HTMLAttributes<HTMLKvmStockFindElement>;
             "kvm-stock-price": LocalJSX.KvmStockPrice & JSXBase.HTMLAttributes<HTMLKvmStockPriceElement>;
         }
