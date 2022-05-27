@@ -1,11 +1,11 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   outline: none;
   text-decoration: none;
   list-style: none;
-  border:none;
+  border: none;
   font-family: sans-serif;
 }
 
@@ -19,15 +19,14 @@
   gap: 9px;
 }
 
-
-form  {
-  display:flex;
+form {
+  display: flex;
   flex-direction: column;
   gap: 7px;
 }
 
-form input  {
-  font-size: 1.0rem;
+form input {
+  font-size: 1rem;
   color: black;
   border: 1px solid #3b013b;
   padding: 3px 3px;
@@ -43,7 +42,6 @@ form button {
   max-width: 40%;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
-
 }
 
 form button span {
@@ -53,9 +51,12 @@ form button span {
   line-height: 1.5rem;
 }
 
+button:disabled {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+}
 
 form button:hover {
   opacity: 0.7;
 }
-
-

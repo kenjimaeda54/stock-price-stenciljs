@@ -6,10 +6,19 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface KvmStockFind {
+    }
     interface KvmStockPrice {
+        "stockDefault": string;
     }
 }
 declare global {
+    interface HTMLKvmStockFindElement extends Components.KvmStockFind, HTMLStencilElement {
+    }
+    var HTMLKvmStockFindElement: {
+        prototype: HTMLKvmStockFindElement;
+        new (): HTMLKvmStockFindElement;
+    };
     interface HTMLKvmStockPriceElement extends Components.KvmStockPrice, HTMLStencilElement {
     }
     var HTMLKvmStockPriceElement: {
@@ -17,13 +26,18 @@ declare global {
         new (): HTMLKvmStockPriceElement;
     };
     interface HTMLElementTagNameMap {
+        "kvm-stock-find": HTMLKvmStockFindElement;
         "kvm-stock-price": HTMLKvmStockPriceElement;
     }
 }
 declare namespace LocalJSX {
+    interface KvmStockFind {
+    }
     interface KvmStockPrice {
+        "stockDefault"?: string;
     }
     interface IntrinsicElements {
+        "kvm-stock-find": KvmStockFind;
         "kvm-stock-price": KvmStockPrice;
     }
 }
@@ -31,6 +45,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "kvm-stock-find": LocalJSX.KvmStockFind & JSXBase.HTMLAttributes<HTMLKvmStockFindElement>;
             "kvm-stock-price": LocalJSX.KvmStockPrice & JSXBase.HTMLAttributes<HTMLKvmStockPriceElement>;
         }
     }
