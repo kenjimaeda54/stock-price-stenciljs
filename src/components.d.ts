@@ -32,6 +32,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface KvmStockFind {
+        "onUcSymbolSelected"?: (event: CustomEvent<string>) => void;
     }
     interface KvmStockPrice {
         "stockDefault"?: string;

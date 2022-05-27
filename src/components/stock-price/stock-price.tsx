@@ -1,4 +1,4 @@
-import { h, Component, State, Prop, Watch } from '@stencil/core';
+import { h, Component, State, Prop, Watch, Listen } from '@stencil/core';
 
 @Component({
   tag: 'kvm-stock-price',
@@ -13,12 +13,25 @@ export class StockPrice {
 
   @Prop({ mutable: true, reflect: true }) stockDefault: string; //isto e convertido do camel case para stock-default
 
+  //https://stenciljs.com/docs/events
+  //mando evento customizado pelo @Event e capturo pelo listener o target e o body ou seja <body>qualquer evento daqui disparado </body>
+  //precisa ser o nome do evento que criei
+  @Listen('ucSymbolSelected', { target: 'body' })
+  symbolSelectedHandler(event: CustomEvent<string>) {
+    //vou receber valor que passei pelo emit do event no event.detail
+    if (event.detail && event.detail !== this.stockDefault) {
+      this.error = null;
+      this.stockDefault = event.detail;
+    }
+  }
+
   //estou colando uma propriedade para observar se a props mudou
   //ou seja se mudar no html reflete aqui <kvm-stock-price stock-default="reflete"  >
   @Watch('stockDefault')
   watchStockDefault(newValue: string, oldValue: string) {
     if (newValue !== oldValue) {
       this.stockSymbol = newValue;
+      this.isValidInput = true;
       this.fetchData(newValue);
     }
   }
@@ -40,6 +53,12 @@ export class StockPrice {
       // <kvm-stock-price stock-default="symbol"  > </kvm-stock-price>
       this.fetchData(this.stockDefault);
     }
+  }
+
+  //com hostData consigo acessar o elemento tag e adicionar uma classe
+  //<kvm-stock-price class="acesso aqui"  > </kvm-stock-price>
+  hostData() {
+    return { class: this.error && 'error' };
   }
 
   async fetchData(stock: string) {

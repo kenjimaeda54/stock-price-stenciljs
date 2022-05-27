@@ -55,3 +55,21 @@ form button span {
 form button:hover {
   opacity: 0.7;
 }
+
+li {
+  margin: 20px 0px;
+  padding: 10px 7px;
+  border-radius: 3px;
+  border: 1px solid #3b013b;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #3b013b;
+  color: white;
+}
+
+.selectedSymbol {
+  background-color: #3b013b;
+  color: white;
+}

@@ -19,6 +19,10 @@
   gap: 9px;
 }
 
+:host(.error) {
+  border: 1px solid red;
+}
+
 form {
   display: flex;
   flex-direction: column;
