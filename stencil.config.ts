@@ -2,7 +2,7 @@ import { Config } from '@stencil/core';
 import dotenvPlugin from 'rollup-plugin-dotenv';
 
 export const config: Config = {
-  namespace: 'stock-price',
+  namespace: 'stock-price-web-component',
   outputTargets: [
     {
       type: 'dist',

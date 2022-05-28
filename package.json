@@ -1,6 +1,6 @@
 {
-  "name": "stock-price",
-  "version": "0.0.1",
+  "name": "kvm-stock-price-web-component",
+  "version": "0.1.5",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -10,10 +10,6 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/stock-price/stock-price.esm.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ionic-team/stencil-component-starter.git"
-  },
   "files": [
     "dist/",
     "loader/"
