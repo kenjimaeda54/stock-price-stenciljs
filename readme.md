@@ -1,15 +1,15 @@
 # Stock Price
 Aplicação para gerar dados de preço de companhias, fetch na api [Alpha](https://www.alphavantage.co/)
 
-## Motivacao
-Aplicar e fortalecer novos conceitos relacionados a stencil para construcao de web component
+## Motivação
+Aplicar e fortalecer novos conceitos relacionados a stencil para construção de web component
 
 ## Feature
-- Usei o decorador Watch para monitorar uma props minha na tag <kvm-stock-price></kvm-stok-price>,toda vez qeu ela alterar refletiria automatico na classe
-- Apenas o decorador e a funcoa e o suficiente para executar toda logica de negocio,essa funcao recebe dois argumetnos o novo valor e o antigo
-- Utilizei tambem um recurso para adicionar de forma dinamica classe no host,assim toda vez que gerava erro o host todo poderia ser estilizado de acordo com o erro
-- Exemplo abaixo esta o uso do Watch e hostData
-- Para o Watch funcionar corretamente precisa dos metodos mutable,reflect na @Prop
+- Usei o decorador Watch para monitorar uma props minha na tag <kvm-stock-price></kvm-stok-price>, toda vez que ela alterar refletiria automático na classe
+- Apenas o decorador e a função e o suficiente para executar toda logica de negócio, essa função recebe dois argumentos o novo valor e o antigo
+- Utilizei também um recurso para adicionar de forma dinâmica classe no host, assim toda vez que gerava erro o host todo poderia ser estilizado conforme o erro
+- Exemplo abaixo está a uso do Watch e hostData
+- Para o Watch funcionar corretamente precisa dos metodos mutable, reflect na @Prop
 
 ```typescript
 
@@ -31,13 +31,13 @@ Aplicar e fortalecer novos conceitos relacionados a stencil para construcao de w
 
 ## 
 
-- Utilizei meus proprios (eventos)[https://stenciljs.com/docs/e] customizados e disparei ele entre componentes diferentes
-- Para isto funcionar preciso do decorador  @Listen na funcao recebera evento, decorador @Event quem ira disparar
-- Para funcao que recebera o evento e simplemente o decorador @Listem e abaixo a logica de negocio nesse caso uma funcao,esta logica executada automatica assim que dispara o evento
-- Precisa do argumento que sera o nome do evento criado , e o segundo argumento e o alvo normlamente body
+- Utilizei meus próprios (eventos)[https://stenciljs.com/docs/e] customizados e disparei ele entre componentes diferentes
+- Para isto funcionar preciso do decorador  @Listen na função que  recebera evento, decorador @Event quem ira disparar
+- Para função que recebera o evento e simplesmente o decorador @Listem e abaixo a lógica de negócio nesse caso uma função, ela sera executada automática assim que dispara o evento
+- Precisa do argumento que sera o nome do evento criado, e o segundo argumento e o alvo normalmente body
 - Abaixo repara que @Listen recebe em string o nome do evento ucSymbolSelected e o argumento target
-- Quem emit o evento e necessario usar o metodo bubbles e composed,eles irao fazer com que o evento seja espalhado pela arvore DOm
-- Valor emitido no evento e atraves do metodo emit() , o valor que esta sendo emetido fica em (detail)[https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail]
+- Quem emit o evento e necessário usar o método bubbles e composed, eles irão fazer com que o evento seja espalhado pela árvore DOm
+- Valor emitido no evento e através do método emit() , o valor que esta sendo emitido fica em (detail)[https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail]
 
 ```typescript 
 
