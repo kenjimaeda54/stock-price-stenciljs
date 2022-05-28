@@ -1,5 +1,5 @@
 # Stock Price
-APlicacao para gerar dados de preco de companhias, fetch na api [Alpha](https://www.alphavantage.co/)
+Aplicação para gerar dados de preço de companhias, fetch na api [Alpha](https://www.alphavantage.co/)
 
 ## Motivacao
 Aplicar e fortalecer novos conceitos relacionados a stencil para construcao de web component
