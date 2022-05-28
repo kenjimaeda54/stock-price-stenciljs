@@ -122,5 +122,44 @@ export class StockPrice  {
 }
 ```
 
+## 
+- Trabalhei com variáveis de ambiente usando .env
+- Precisa instalar e configurar [plugin rollup-plugin-dotenv](https://medium.com/learnwithrahul/using-environment-variables-with-stenciljs-d3425592fa18)   no stencil.config.js
+- Apos isto e uso comum do .env
+
+```typescript
+import { Config } from '@stencil/core';
+import dotenvPlugin from 'rollup-plugin-dotenv';
+
+export const config: Config = {
+  namespace: 'stock-price',
+  outputTargets: [
+    {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+    },
+    {
+      type: 'dist-custom-elements',
+    },
+    {
+      type: 'docs-readme',
+    },
+    {
+      type: 'www',
+      serviceWorker: null, // disable service workers
+    },
+  ],
+  plugins: [dotenvPlugin()],
+};
+
+
+
+
+```
+
+## Como iniciar projeto
+- Clone o repositorio
+- Instale a dependência com seu gerenciador favorito npm ou yarn
+- Apos isto está pronto para iniciar com npm start na raiz do packjson
 
 
