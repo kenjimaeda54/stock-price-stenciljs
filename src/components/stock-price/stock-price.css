@@ -20,7 +20,7 @@
 }
 
 :host(.error) {
-  border: 1px solid var(--color-error, red);
+  border: 1px solid var(--color-error, #ff0000);
 }
 
 form {

@@ -1,6 +1,6 @@
 {
   "name": "kvm-stock-price-web-component",
-  "version": "1.1.11",
+  "version": "1.2.13",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
