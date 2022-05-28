@@ -97,8 +97,7 @@ handleSymbolSelected(symbol: string) {
 - Para componetizar e aproveitar elementos precisa apenas criar componente normalmente com classe e usar a tag do componente
 - Neste caso abaixo e o <kvm-spinner></kvm-spinner>
 
-
-``` typscript
+``` typescript
 export class StockPrice  {
   componentDidLoad() {
     if (this.stockDefault) {
