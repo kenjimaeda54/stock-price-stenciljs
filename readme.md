@@ -9,15 +9,15 @@ Aplicar e fortalecer novos conceitos relacionados a stencil para construção de
 
 ## Como iniciar projeto
 
-- Install como dev dependencia
+- Install como dev dependência
 - npm i kvm-stock-price-web-component
 
 ## Como usar
 
-- Precisa registrar o pacote, lembra-se isto e um web componente , simplemente html e javascript
+- Precisa registrar o pacote, lembra-se isto e um web componente , simplesmente html e javascript
 - Você precisa importar dentro de 'kvm-stock-price-web-component/dist/loader',defineCustomElements
-- Abaixo esta um exemplo, normalmente você ira utilizar essa abordagem na maior hierarquia do seu framework or lib
-- React em index.js, Vue em main.js e angular main.ts
+- Abaixo esta um exemplo, normalmente você ira usar essa abordagem na maior hierarquia do seu framework or lib
+- React(index.js), Vue(main.js) e angular(main.ts)
 
 ```typescript
 import { defineCustomElements } from 'kvm-stock-price-web-component';
@@ -25,16 +25,18 @@ import { defineCustomElements } from 'kvm-stock-price-web-component';
 defineCustomElements(window);
 ```
 
-- Apos definir o componente, utilizara como tag comum de hmtl, não precisa fazer mais nadazer mais nada
-- Tags disponíveis são <kvm-stock-price ></kvm-stock-price> <kvm-stock-find><kvm-stock-find>d><kvm-stock-find>
-- Tag kvm-stock-price aceita um atributo que chama stock-default
-- stock-default espera uma string que corresponde a uma sigla exemplo: IBM
-- Não conhece as siglas pode usar a tag stock-find para encontrar as siglas disponíveis
+- Apos definir o componente, utiliza como tag comum de hmtl, não precisa fazer mais nada além disso
+- Tags disponíveis são <kvm-stock-price ></kvm-stock-price> <kvm-stock-find><kvm-stock-find><kvm-stock-find>
+- Tag kvm-stock-price aceita um atributo stock-default
+- stock-default espera uma string corresponde a uma sigla exemplo: IBM
+- Se stock-default existir,ira automaticamente assim pagina carregar, fazer uma requisição na api e retornar o preço correspondente
+- Não conhece as siglas,pode usar a tag stock-find para encontrar as siglas disponíveis
 - Abaixo esta exemplo de uso em qualquer frameWork ou lib
 
 ```typescript
-//tag identico  ao html <button><a>
+//tag idêntico  ao html <button><a>
 <kvm-stock-price />
+<kvm-stock-price stock-default="IBM">
 <kvm-stock-find />
 
 ```
@@ -42,6 +44,43 @@ defineCustomElements(window);
 ## Objetivo
 
 - Gerar o valor da companhia de acordo com a sigla colocada,usando dados da [ALPHA VANTAGE](https://www.alphavantage.co/)
+
+## CSS
+
+- Deseja customizar seus estilos
+- Pode sobrescrever as variaveis de cor de css com abordagem de [variáveis](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Using_CSS_custom_properties) em css
+- As variaveis disponíveis estão abaixo
+- Para saber em quais arquivos irão gerar efeitos pode consultar o arquivo [fonte](https://github.com/kenjimaeda54/stock-price-stenciljs/blob/develop/src/components/stock-price/stock-price.css)
+
+```html
+<style>
+  html {
+    --color-primary: #3b013b;
+    --color-error: #4b099b;
+    --color-white: white;
+    --color-disabled: gray;
+  }
+</style>
+```
+
+## Bugs
+
+- Para react com typescript não acusar erro e compreender que e um custom elemento, você precisa aplicar polimorfismo
+- Para isto usa a interface IntrinsicElement, abaixo esta, exemplo
+- Nome do arquivo declaration.d.ts na raiz do projeto
+
+```typescript
+import * as React from 'react';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'kvm-stock-price': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      'kvm-stock-find': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    }
+  }
+}
+```
 
 ## Feature do projeto codigo fonte
 
@@ -131,6 +170,7 @@ export class StockFind {
 - componentDidLoad() ,carregado assim que o render , chamado e apenas uma vez
 - Este cilo e ideal para chamadas em api se desejamos manta arvore com o valor apos fetch
 - Trabalhei com variáveis de css segue mesmo principio que normalmente fazemos
+- As variáveis apenas surgiram efeitos se existir na raiz do projeto quem for usar, então precisa coloca uma cor default para suas variáveis, pois se não existir serão essas que serão usadas
 - Para componetizar e aproveitar elementos precisa apenas criar componente normalmente com classe e usar a tag do componente
 - Neste caso abaixo e o <kvm-spinner></kvm-spinner>
 
