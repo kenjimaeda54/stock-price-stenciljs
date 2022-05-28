@@ -31,13 +31,13 @@ Aplicar e fortalecer novos conceitos relacionados a stencil para construção de
 
 ## 
 
-- Utilizei meus próprios (eventos)[https://stenciljs.com/docs/e] customizados e disparei ele entre componentes diferentes
+- Utilizei meus próprios [eventos](https://stenciljs.com/docs/e) customizados e disparei ele entre componentes diferentes
 - Para isto funcionar preciso do decorador  @Listen na função que  recebera evento, decorador @Event quem ira disparar
 - Para função que recebera o evento e simplesmente o decorador @Listem e abaixo a lógica de negócio nesse caso uma função, ela sera executada automática assim que dispara o evento
 - Precisa do argumento que sera o nome do evento criado, e o segundo argumento e o alvo normalmente body
 - Abaixo repara que @Listen recebe em string o nome do evento ucSymbolSelected e o argumento target
 - Quem emit o evento e necessário usar o método bubbles e composed, eles irão fazer com que o evento seja espalhado pela árvore DOm
-- Valor emitido no evento e através do método emit() , o valor que esta sendo emitido fica em (detail)[https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail]
+- Valor emitido no evento e através do método emit() , o valor que esta sendo emitido fica em [detail](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
 
 ```typescript 
 
@@ -91,10 +91,10 @@ handleSymbolSelected(symbol: string) {
 ```
 ## 
 - Utilizei (ciclos de vida)[https://stenciljs.com/docs/component-lifecycle#componentdidload] do Stencil
-- componentDidLoad() e carregado assim que o render e chamado e apenas uma vez
-- Este cilo e ideal para chamadas em api e desejamos que monte arvore com o valor desejado apos fetch
-- Trabalhei com variaveis de css tambem segue mesmo principio que normalmente fazemos
-- Para componetizar e aproveitar elementos precisa apenas criar componente normlamente com classe e usar a tag do componetente
+- componentDidLoad() ,carregado assim que o render , chamado e apenas uma vez
+- Este cilo e ideal para chamadas em api se desejamos manta arvore com o valor  apos fetch
+- Trabalhei com variáveis de css  segue mesmo principio que normalmente fazemos
+- Para componetizar e aproveitar elementos precisa apenas criar componente normalmente com classe e usar a tag do componente
 - Neste caso abaixo e o <kvm-spinner></kvm-spinner>
 
 
