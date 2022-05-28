@@ -90,7 +90,7 @@ handleSymbolSelected(symbol: string) {
 }
 ```
 ## 
-- Utilizei (ciclos de vida)[https://stenciljs.com/docs/component-lifecycle#componentdidload] do Stencil
+- Utilizei [ciclos de vida](https://stenciljs.com/docs/component-lifecycle#componentdidload) do Stencil
 - componentDidLoad() ,carregado assim que o render , chamado e apenas uma vez
 - Este cilo e ideal para chamadas em api se desejamos manta arvore com o valor  apos fetch
 - Trabalhei com variáveis de css  segue mesmo principio que normalmente fazemos
