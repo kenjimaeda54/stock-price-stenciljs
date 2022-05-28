@@ -1,6 +1,7 @@
 # Stock Price
 
-Aplicação para gerar dados de preço de companhias, fetch na api [Alpha](https://www.alphavantage.co/)
+Aplicação para gerar dados de preço de companhias, fetch na api [Alpha](https://www.alphavantage.co/)</br>
+[Publicado](https://www.npmjs.com/package/kvm-stock-price-web-component)
 
 ## Motivação
 
