@@ -56,7 +56,7 @@ form button span {
 }
 
 button:disabled {
-  background-color: var(--color-disabled, gray);
+  background-color: var(--color-disabled, #808080);
   color: white;
   cursor: not-allowed;
 }

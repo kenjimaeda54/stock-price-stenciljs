@@ -20,7 +20,7 @@ Aplicar e fortalecer novos conceitos relacionados a stencil para construção de
 - React(index.js), Vue(main.js) e angular(main.ts)
 
 ```typescript
-import { defineCustomElements } from 'kvm-stock-price-web-component';
+import { defineCustomElements } from 'kvm-stock-price-web-component/loader';
 
 defineCustomElements(window);
 ```
@@ -198,6 +198,10 @@ export class StockPrice  {
 
 }
 ```
+
+##
+
+- Para publicar e integrar, pode seguir esse [tutorial](https://medium.com/stencil-tricks/publishing-and-integrating-a-stenciljs-reusable-web-component-in-react-66f852582f6b)
 
 ##
 
